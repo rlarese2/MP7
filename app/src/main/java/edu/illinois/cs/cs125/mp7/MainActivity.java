@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * get text to form URL API CALL!
+     * get text to form URL API call.
      */
     public String getText(final String input) {
         String formatted = input.toLowerCase();
