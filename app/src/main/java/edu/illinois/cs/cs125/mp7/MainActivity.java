@@ -20,8 +20,10 @@ import com.android.volley.toolbox.Volley;
 
 public class MainActivity extends AppCompatActivity {
 
-    String currentLocation;
-    String finalLocation;
+    String YOUR_API_KEY = null;
+
+    String start;
+    String destination;
     String parameters;
 
     /** Default logging tag for messages from the main activity. */
@@ -90,8 +92,8 @@ public class MainActivity extends AppCompatActivity {
         try {
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                     Request.Method.GET,
-                    "https://www.google.com/maps/dir/?api=1&" + parameters,
-                    null,
+                    "https://maps.googleapis.com/maps/api/directions/json?origin=" + start + "&destination=" + destination + "&key=" + YOUR_API_KEY,
+            null,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(final JSONObject response) {
