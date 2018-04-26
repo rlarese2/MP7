@@ -20,10 +20,13 @@ import com.android.volley.toolbox.Volley;
 
 public class MainActivity extends AppCompatActivity {
 
-    String YOUR_API_KEY = null;
+    String YOUR_API_KEY = "AIzaSyBOpGPVyJWQCtDhTXVpFhBF1ZZNIfR6r6s";
 
-    String start;
-    String destination;
+    EditText currLoc = (EditText) findViewById(R.id.currLoc);
+    EditText destLoc = (EditText) findViewById(R.id.destLoc);
+
+    String start = currLoc.getText().toString();
+    String destination = destLoc.getText().toString();;
     String parameters;
 
     /** Default logging tag for messages from the main activity. */
@@ -35,22 +38,10 @@ public class MainActivity extends AppCompatActivity {
     The button to get directions.
      */
     Button button;
-    /*
-    The editable text box for current Location;
-     */
-    EditText currLoc;
-    /*
-    The editable text box for destinated location.
-     */
-    EditText destLoc;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        currLoc = (EditText) findViewById(R.id.currLoc);
-        destLoc = (EditText) findViewById(R.id.destLoc);
     }
 
     /*
