@@ -60,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     /*
         Button to get Directions from Google.
      */
@@ -109,6 +108,15 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
 
+    /**
+     * parse the time out.
+     */
+    public int getTime(final JSONObject json) {
+        if (json == null) {
+            return 0;
+        }
+        return 0;
     }
 }
