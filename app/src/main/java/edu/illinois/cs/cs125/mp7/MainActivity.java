@@ -10,7 +10,9 @@ import android.widget.TextView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONArray;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -115,15 +117,15 @@ public class MainActivity extends AppCompatActivity {
     /**
      * parse the time out.
      */
-    public double getTime(final JsonObject json) {
+    public String getTime(final JSONObject json) throws JSONException {
         if (json == null) {
-            return 0;
+            return null;
         }
-        JsonObject result = json;
-        JsonArray routes = result.getAsJsonArray("routes");
-        JsonArray legs = routes.get(2).getAsJsonArray();
-        JsonObject duration = legs.get(2).getAsJsonObject();
-        double time = duration.get("text").getAsDouble();
+        JSONObject result = json;
+        JSONArray routes = result.getJSONArray("routes");
+        JSONArray legs = routes.getJSONArray(2);
+        JSONObject duration = legs.getJSONObject(2);
+        String time = duration.getString("text");
         return time;
     }
 }
