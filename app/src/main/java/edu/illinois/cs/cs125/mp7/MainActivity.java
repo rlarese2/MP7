@@ -20,11 +20,15 @@ import com.android.volley.toolbox.Volley;
 
 public class MainActivity extends AppCompatActivity {
 
-    String YOUR_API_KEY = "AIzaSyBOpGPVyJWQCtDhTXVpFhBF1ZZNIfR6r6s";
+    String YOUR_API_KEY = null;
 
+    // Gets the editText from starting location.
     EditText currLoc = (EditText) findViewById(R.id.currLoc);
+
+    // Gets the editText from Destination Location.
     EditText destLoc = (EditText) findViewById(R.id.destLoc);
 
+    // Stores EditTexts as Strings.
     String start = currLoc.getText().toString();
     String destination = destLoc.getText().toString();;
     String parameters;
@@ -38,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     The button to get directions.
      */
     Button button;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_LONG).show();
+                startAPICall();
             }
         });
     }
