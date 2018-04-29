@@ -56,19 +56,19 @@ public class MainActivity extends AppCompatActivity {
     public void button(View v) {
         button = (Button) findViewById(R.id.button);
 
-        setContentView(R.layout.activity_main);
-        TextView dTime = (TextView) findViewById(R.id.estTime);
-        dTime.setText(driveTime);
-
-        setContentView(R.layout.activity_main);
-        TextView dist = (TextView) findViewById(R.id.Distance);
-        dist.setText(distance);
-
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_LONG).show();
                 startAPICall();
+
+                setContentView(R.layout.activity_main);
+                TextView dTime = (TextView) findViewById(R.id.estTime);
+                dTime.setText(driveTime);
+
+                setContentView(R.layout.activity_main);
+                TextView dist = (TextView) findViewById(R.id.Distance);
+                dist.setText(distance);
             }
         });
     }
@@ -101,6 +101,12 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(final JSONObject response) {
                             Log.d(TAG, response.toString());
+                            try {
+                                driveTime = getTime(response);
+                                distance = getDist(response);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
                         }
                     }, new Response.ErrorListener() {
                         @Override
@@ -125,6 +131,21 @@ public class MainActivity extends AppCompatActivity {
         JSONArray routes = result.getJSONArray("routes");
         JSONArray legs = routes.getJSONArray(2);
         JSONObject duration = legs.getJSONObject(2);
+        String time = duration.getString("text");
+        return time;
+    }
+
+    /**
+     * parse the time out.
+     */
+    public String getDist(final JSONObject json) throws JSONException {
+        if (json == null) {
+            return null;
+        }
+        JSONObject result = json;
+        JSONArray routes = result.getJSONArray("routes");
+        JSONArray legs = routes.getJSONArray(2);
+        JSONObject duration = legs.getJSONObject(3);
         String time = duration.getString("text");
         return time;
     }
