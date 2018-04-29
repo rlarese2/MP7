@@ -67,12 +67,18 @@
                 android:layout_height="match_parent"
                 android:layout_weight="-1"
                 android:contentDescription="Instructions"
-                android:text="Enter your starting building and your destinated building."
+                android:text="Enter your starting building and your destination building."
                 android:textAllCaps="false"
                 android:textAppearance="@style/TextAppearance.AppCompat"
                 android:textSize="14sp"
                 app:fontFamily="sans-serif" />
         </LinearLayout>
+
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/mapView"
+            android:layout_width="match_parent"
+            android:layout_height="357dp"
+            android:layout_weight="-2" />
 
     </LinearLayout>
 

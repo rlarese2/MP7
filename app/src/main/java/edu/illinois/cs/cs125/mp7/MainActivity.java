@@ -23,11 +23,12 @@ import com.google.gson.JsonParser;
 
 public class MainActivity extends AppCompatActivity {
 
-    String YOUR_API_KEY = null;
+    String YOUR_API_KEY = "AIzaSyBOpGPVyJWQCtDhTXVpFhBF1ZZNIfR6r6s";
 
-    String start;
-    String destination;
-    String parameters;
+    EditText currLoc = (EditText) findViewById(R.id.currLoc);
+    EditText destLoc = (EditText) findViewById(R.id.destLoc);
+    String start = currLoc.getText().toString();
+    String destination = destLoc.getText().toString();
 
     /** Default logging tag for messages from the main activity. */
     private static final String TAG = "MP7:Schedule Logistics";
@@ -38,22 +39,11 @@ public class MainActivity extends AppCompatActivity {
     The button to get directions.
      */
     Button button;
-    /*
-    The editable text box for current Location;
-     */
-    EditText currLoc;
-    /*
-    The editable text box for destinated location.
-     */
-    EditText destLoc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        currLoc = (EditText) findViewById(R.id.currLoc);
-        destLoc = (EditText) findViewById(R.id.destLoc);
     }
 
     /*
@@ -72,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_LONG).show();
+                startAPICall();
             }
         });
     }
@@ -123,8 +114,8 @@ public class MainActivity extends AppCompatActivity {
         JsonObject result = json;
         JsonArray routes = result.getAsJsonArray("routes");
         JsonArray legs = routes.get(2).getAsJsonArray();
-        JsonObject text = legs.get(2).getAsJsonObject();
-        double time = text.get("text").getAsDouble();
+        JsonObject duration = legs.get(2).getAsJsonObject();
+        double time = duration.get("text").getAsDouble();
         return time;
     }
 }
