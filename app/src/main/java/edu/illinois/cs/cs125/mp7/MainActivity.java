@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -24,11 +25,6 @@ import com.google.gson.JsonParser;
 public class MainActivity extends AppCompatActivity {
 
     String YOUR_API_KEY = "AIzaSyBOpGPVyJWQCtDhTXVpFhBF1ZZNIfR6r6s";
-
-    //EditText currLoc = (EditText) findViewById(R.id.currLoc);
-    //EditText destLoc = (EditText) findViewById(R.id.destLoc);
-    //String start = currLoc.getText().toString();
-    //String destination = destLoc.getText().toString();
 
     String start = "";
     String destination = "";
@@ -49,18 +45,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    /*
-    search boxes to input the starting location.
-     */
-    public void start(View v) {
-
-    }
+    public String driveTime;
+    public String distance;
 
     /*
         Button to get Directions from Google.
      */
     public void button(View v) {
         button = (Button) findViewById(R.id.button);
+
+        setContentView(R.layout.activity_main);
+        TextView dTime = (TextView) findViewById(R.id.estTime);
+        dTime.setText(driveTime);
+
+        setContentView(R.layout.activity_main);
+        TextView dist = (TextView) findViewById(R.id.Distance);
+        dist.setText(distance);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,6 +86,10 @@ public class MainActivity extends AppCompatActivity {
      * Make an API call.
      */
     public void startAPICall() {
+        EditText currLoc = (EditText) findViewById(R.id.currLoc);
+        EditText destLoc = (EditText) findViewById(R.id.destLoc);
+        start = currLoc.getText().toString();
+        destination = destLoc.getText().toString();
         try {
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                     Request.Method.GET,
