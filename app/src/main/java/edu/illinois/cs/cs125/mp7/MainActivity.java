@@ -17,6 +17,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -113,10 +116,15 @@ public class MainActivity extends AppCompatActivity {
     /**
      * parse the time out.
      */
-    public int getTime(final JSONObject json) {
+    public double getTime(final JsonObject json) {
         if (json == null) {
             return 0;
         }
-        return 0;
+        JsonObject result = json;
+        JsonArray routes = result.getAsJsonArray("routes");
+        JsonArray legs = routes.get(2).getAsJsonArray();
+        JsonObject text = legs.get(2).getAsJsonObject();
+        double time = text.get("text").getAsDouble();
+        return time;
     }
 }
