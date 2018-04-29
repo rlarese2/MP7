@@ -25,10 +25,13 @@ public class MainActivity extends AppCompatActivity {
 
     String YOUR_API_KEY = "AIzaSyBOpGPVyJWQCtDhTXVpFhBF1ZZNIfR6r6s";
 
-    EditText currLoc = (EditText) findViewById(R.id.currLoc);
-    EditText destLoc = (EditText) findViewById(R.id.destLoc);
-    String start = currLoc.getText().toString();
-    String destination = destLoc.getText().toString();
+    //EditText currLoc = (EditText) findViewById(R.id.currLoc);
+    //EditText destLoc = (EditText) findViewById(R.id.destLoc);
+    //String start = currLoc.getText().toString();
+    //String destination = destLoc.getText().toString();
+
+    String start = "";
+    String destination = "";
 
     /** Default logging tag for messages from the main activity. */
     private static final String TAG = "MP7:Schedule Logistics";
