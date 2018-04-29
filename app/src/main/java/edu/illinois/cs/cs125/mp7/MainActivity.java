@@ -90,8 +90,8 @@ public class MainActivity extends AppCompatActivity {
     public void startAPICall() {
         EditText currLoc = (EditText) findViewById(R.id.currLoc);
         EditText destLoc = (EditText) findViewById(R.id.destLoc);
-        start = currLoc.getText().toString();
-        destination = destLoc.getText().toString();
+        start = currLoc.getText().toString() + "+Champaign,+IL";
+        destination = destLoc.getText().toString() + "+Champaign,+IL";
         try {
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                     Request.Method.GET,
