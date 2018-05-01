@@ -65,15 +65,15 @@ public class MainActivity extends AppCompatActivity {
 
                 setContentView(R.layout.activity_main);
                 TextView dTime = (TextView) findViewById(R.id.estTime);
-                dTime.setText(driveTime);
+                dTime.setText("Time via bus: " + driveTime);
 
                 setContentView(R.layout.activity_main);
                 TextView dist = (TextView) findViewById(R.id.Distance);
-                dist.setText(distance);
+                dist.setText("Total travel distance: " + distance);
 
                 double Distance = Double.parseDouble(distance);
                 double WALKtime = Distance / 3.1;
-                walkTime = Double.toString(WALKtime);
+                walkTime = "Time via walk: " + Double.toString(WALKtime);
 
                 setContentView(R.layout.activity_main);
                 TextView walk = (TextView) findViewById(R.id.walkTimetxt);
