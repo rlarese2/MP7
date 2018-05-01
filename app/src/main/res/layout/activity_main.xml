@@ -85,13 +85,20 @@
                     android:id="@+id/estTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Estimated Time:" />
+                    android:text="Drive Time:" />
+
+                <TextView
+                    android:id="@+id/walkTimetxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Walk Time:" />
 
                 <TextView
                     android:id="@+id/Distance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Distance:" />
+
             </LinearLayout>
 
         </LinearLayout>

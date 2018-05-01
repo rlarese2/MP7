@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public String driveTime;
+    public String walkTime;
     public String distance;
 
     /*
@@ -69,6 +70,14 @@ public class MainActivity extends AppCompatActivity {
                 setContentView(R.layout.activity_main);
                 TextView dist = (TextView) findViewById(R.id.Distance);
                 dist.setText(distance);
+
+                double Distance = Double.parseDouble(distance);
+                double WALKtime = Distance / 3.1;
+                walkTime = Double.toString(WALKtime);
+
+                setContentView(R.layout.activity_main);
+                TextView walk = (TextView) findViewById(R.id.walkTimetxt);
+                dist.setText(walkTime);
             }
         });
     }
@@ -90,8 +99,8 @@ public class MainActivity extends AppCompatActivity {
     public void startAPICall() {
         EditText currLoc = (EditText) findViewById(R.id.currLoc);
         EditText destLoc = (EditText) findViewById(R.id.destLoc);
-        start = currLoc.getText().toString() + "+Champaign,+IL";
-        destination = destLoc.getText().toString() + "+Champaign,+IL";
+        start = currLoc.getText().toString() + "+Champaign+IL";
+        destination = destLoc.getText().toString() + "+Champaign+IL";
         try {
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                     Request.Method.GET,
